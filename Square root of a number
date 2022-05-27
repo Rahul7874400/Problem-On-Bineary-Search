@@ -1,0 +1,40 @@
+#include<stdio.h>
+
+long long int floorSqrt(long long int x) 
+{
+    long long int low = 0,high = x,res;
+    
+    while(low<=high){
+        long long int mid = low+(high-low)/2;
+        long long int i = mid*mid;
+        if(i==x)
+        {
+            res = mid;
+            return res;
+        }
+        
+        else if(i<x){
+            res = mid;
+            low = mid+1;
+        }
+        else
+        high = mid-1;
+    }
+    
+    return res;
+}
+
+
+int main()
+{
+	int t;
+	scanf("%d", &t);
+	while(t--)
+	{
+		long long n;
+		scanf("%ld", &n);
+	
+		printf("%ld\n", floorSqrt(n));
+	}
+    return 0;   
+}
