@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+// Function to count number of Ones
+// arr: input array 
+// N: size of input array
+int countOnes(int arr[], int N)
+{
+    int low = 0,high = N-1;
+    while(low<=high)
+    {
+        int mid = (low+high)/2;
+        
+        if(arr[mid]==0)
+        high = mid-1;
+        
+        else{
+            if(mid==N-1 || arr[mid+1]!=1)
+            return mid+1;
+            
+            else
+            low = mid+1;
+        }
+    }
+    
+    return 0;
+}
+
+int main(){
+    
+    int t;
+	scanf("%d", &t);
+	while (t--)
+	{
+		int n;
+		scanf("%d", &n);
+		int *a;
+		a = (int*)malloc(n * sizeof(int));
+		for (int i = 0; i < n; ++i)
+			scanf("%d", &a[i]);
+
+		printf("%d\n", countOnes(a, n) );
+	}
+	return 0;
+	
+}
